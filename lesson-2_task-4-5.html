@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 2 task 4-5</title>
+</head>
+<body>
+<script>
+    'use strict';
+    /*
+    * 4. Реализовать основные 4 арифметические операции (+, -, /, *) в виде функций с двумя
+    *    параметрами. Т.е. например, функция для сложения должна принимать два числа, складывать их
+    *    и возвращать результат.
+    *    Обязательно использовать оператор return.
+    */
+
+    /**
+     * Функция для сложения чисел
+     * @param {number} a - первое число
+     * @param {number} b - второе число
+     * @returns {number} Number a + b
+     */
+    function add(a, b) {
+        return a + b;
+    }
+
+    /**
+     * Функция для вычитания чисел
+     * @param {number} a - первое число
+     * @param {number} b - второе число
+     * @returns {number} Number a - b
+     */
+    function sub(a, b) {
+        return a - b;
+    }
+
+    /**
+     * Функция для деления чисел
+     * @param {number} a - первое число.
+     * @param {number} b - второе число.
+     * @returns {number} Number a / b
+     */
+    function div(a, b) {
+        return a / b;
+    }
+
+    /**
+     * Функция для умножения чисел
+     * @param {number} a - первое число.
+     * @param {number} b - второе число.
+     * @returns {number} Number a * b
+     */
+    function mult(a, b) {
+        return a * b;
+    }
+
+    /*
+    * 5. Реализовать функцию с тремя параметрами: function mathOperation(arg1, arg2, operation),
+    *    где arg1, arg2 – значения аргументов, operation – строка с названием операции. В зависимости от
+    *    переданного значения операции (использовать switch) выполнить одну из арифметических операций
+    *    (использовать функции из задания 4) и вернуть полученное значение.
+    */
+
+    /**
+     * Функция для выполнения арифметических операций
+     * @param {number} arg1 - первое число.
+     * @param {number} arg2 - второе число.
+     * @param {string} operation - название операции.
+     * @returns {(number/string)} arg1 operation arg2
+     */
+    function mathOperation(arg1, arg2, operation) {
+        switch (operation) {
+            case 'сложение':
+                return add(arg1, arg2);
+            case 'вычитание':
+                return sub(arg1, arg2);
+            case 'деление':
+                return div(arg1, arg2);
+            case 'умножение':
+                return mult(arg1, arg2);
+            default:
+                return `Невозможно выполнить операцию "${operation}"`
+        }
+    }
+
+    const firstNum = Number(prompt('Введите первое число:'));
+    const secondNum = Number(prompt('Введите второе число:'));
+    const operation = prompt('Какую операцию нужно выполнить?\n"сложение, вычитание, умножение, деление"');
+
+    alert(mathOperation(firstNum, secondNum, operation));
+</script>
+</body>
+</html>
