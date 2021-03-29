@@ -38,6 +38,7 @@ const productsWithPhotos = products.filter(product => {
     if ('photos' in product) {
         return product.photos.length > 0; // Как я понял если вернуть без сравнения с нулем то будет неявное приведение типов и лучше так не делать.
     }
+    return false;
 });
 
 console.log(productsWithPhotos);

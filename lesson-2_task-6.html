@@ -20,19 +20,40 @@
     *      То есть ваша задача выводить слово «рубль» в правильном падеже, в зависимости от введенного числа.
     */
 
-    function declensionWords(value, first, second, third) {
-        const lastNum = Number(String(value)[String(value).length - 1]);
-        if (value >= 5 && value <= 20 || lastNum >= 5 || lastNum === 0) {
-            return third;
-        } else if (lastNum > 1 && lastNum < 5) {
-            return second;
+    /**
+     * Функция возвращает правильный падеж слова "рубль" в зависимости от переданного числа.
+     * @param {number} value - количество рублей.
+     * @returns {string} слово "рубль" в правильном падеже.
+     */
+    function declensionWords(value) {
+        const lastDigit = getNumberByEndIndex(value, 1);
+        const beforeLastDigit = getNumberByEndIndex(value, 2);
+        if (beforeLastDigit === 1 || lastDigit === 0 || lastDigit >= 5 && lastDigit <= 9) {
+            return 'рублей';
+        } else if (lastDigit >= 2 && lastDigit <= 4) {
+            return 'рубля';
         }
-        return first;
+        return 'рубль';
+    }
+
+    /**
+     * Функция для поиска цифры в числе по ее позиции начиная с конца.
+     * @param {number} num - число в котором осуществляется поиск.
+     * @param {number} endIndex - позиция цифры которую нужно найти, отсчет начинается с конца.
+     * @returns {number|null}
+     */
+    function getNumberByEndIndex(num, endIndex) {
+        num = String(num);
+        let digit = num.charAt(num.length - endIndex);
+        if (digit !== '') {
+            return Number(digit);
+        }
+        return null;
     }
 
     const deposit = parseInt(prompt('Введите сумму которую хотите положить на счет:'));
 
-    alert(`Ваша сумма в ${deposit} ${declensionWords(deposit, 'рубль', 'рубля', 'рублей')} успешно зачислена`);
+    alert(`Ваша сумма в ${deposit} ${declensionWords(deposit)} успешно зачислена`);
 </script>
 </body>
 </html>
