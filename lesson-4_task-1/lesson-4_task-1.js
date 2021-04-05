@@ -23,7 +23,7 @@
  * @returns {Object | {units: number, tens: number, hundreds: number}}
  */
 function numberIntoObject(num) {
-    if (num >= 0 && num <= 999 && Number.isInteger(num) && typeof num === 'number' && !isNaN(num)) {
+    if (num >= 0 && num <= 999 && Number.isInteger(num)) {
         return {
             inits: num < 100 ? num % 10 : (num % 100) % 10,
             tens: num < 100 ? Math.floor(num / 10) : Math.floor((num % 100) / 10),
